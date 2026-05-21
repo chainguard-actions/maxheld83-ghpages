@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v0.3.0 | [`v0.3.0`](https://github.com/chainguard-actions/ghpages/tree/v0.3.0) | — |
+| v0.3.0 | [`v0.3.0`](https://github.com/chainguard-actions/maxheld83--ghpages/tree/v0.3.0) | — |
 
 ## Privacy
 
