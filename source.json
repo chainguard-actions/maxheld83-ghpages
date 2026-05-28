@@ -1,0 +1,11 @@
+{
+  "owner": "maxheld83",
+  "repo": "ghpages",
+  "version": "v0.3.0",
+  "commit_sha": "68f783a4f5313d776c1599e18479607e71c9c738",
+  "url": "https://github.com/maxheld83/ghpages",
+  "policy_sha": "ff50f15e4b79bfbf764dafdfd2579175a6ea9771",
+  "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
+  "test_agent_version": "1",
+  "harden_agent_version": "1"
+}
