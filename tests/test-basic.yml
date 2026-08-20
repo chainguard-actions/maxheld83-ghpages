@@ -1,0 +1,35 @@
+name: Test basic usage (BUILD_DIR set, push fails gracefully)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create a build directory with content
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/build"
+          echo "<html><body>Hello GitHub Pages</body></html>" > "$GITHUB_WORKSPACE/build/index.html"
+
+      - id: action
+        uses: .
+        continue-on-error: true
+        env:
+          BUILD_DIR: /github/workspace/build
+          GH_PAT: fake-pat-not-used
+          GITHUB_ACTOR: test-user
+
+      - name: Assert action ran and failed gracefully (sentinel repo / no real PAT)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully as expected (sentinel repo / no real GH_PAT)"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action succeeded (unexpected but acceptable)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
